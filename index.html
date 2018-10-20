@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Cat Food</title>
+	<link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+	<main>
+		<h1 class="main-title">
+			Ты сегодня кормил кота?
+		</h1>
+		<div class="cards-container">
+			<div class="card-wrapper">
+				<div class="card card--blue">
+					<div class="card__text">
+						<h4 class="card__text__desc">Cказочное заморское яство</h4>
+						<h2 class="card__text__title">Нямушка</h2>
+						<span class="card__text__sub-title">с фуa-гра</span>
+						<div class="card__text__meta">
+							<span><b>10</b> порций</span>
+							<span>мышь в подарок</span>
+						</div>
+					</div>
+					<div class="card__weight">
+						<span>0,5</span>
+						<span>кг</span>
+					</div>
+				</div>
+				<p class="card__bottom-text">Чего сидишь, порадуй коте <a href="#0">купи</a></p>
+			</div>
+
+			<div class="card-wrapper">
+				<div class="card card--red">
+					<div class="card__text">
+						<h4 class="card__text__desc">Cказочное заморское яство</h4>
+						<h2 class="card__text__title">Нямушка</h2>
+						<span class="card__text__sub-title">с рыбой</span>
+						<div class="card__text__meta">
+							<span><b>40</b> порций</span>
+							<span><b>2</b> мыши в подарок</span>
+						</div>
+					</div>
+					<div class="card__weight">
+						<span>0,5</span>
+						<span>кг</span>
+					</div>
+				</div>
+				<p class="card__bottom-text">Головы щучьи с чесноком да свяжайшая семгушка.</p>
+			</div>
+
+
+			<div class="card-wrapper">
+				<div class="card card--disabled">
+					<div class="card__text">
+						<h4 class="card__text__desc">Cказочное заморское яство</h4>
+						<h2 class="card__text__title">Нямушка</h2>
+						<span class="card__text__sub-title">с курой</span>
+						<div class="card__text__meta">
+							<span><b>100</b> порций</span>
+							<span><b>5</b> мышей в подарок</span>
+							<span>Заказчик доволен</span>
+						</div>
+					</div>
+					<div class="card__weight">
+						<span>0,5</span>
+						<span>кг</span>
+					</div>
+				</div>
+				<p class="card__bottom-text">Печалька, с курой закончился.</a></p>
+			</div>
+
+		</div>
+	</main>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+
+	<script type="text/javascript">
+		$(function() {
+			// add selected class when user clicks the package.
+			$('.card-wrapper .card').on('click', function() {
+
+				if (!$(this).hasClass('card--disabled')) {
+					if ($(this).hasClass('card--selected')) {
+						$(this).mouseleave(function() {
+							$(this).removeClass('card--selected')
+						})
+					} else {
+						$(this).mouseleave(function() {
+							$(this).addClass('card--selected')
+						})
+					}
+				}
+			});
+			// add selected class when user clicks on the buy link
+			$('.card__bottom-text a').on('click', function() {
+				console.log('yeay')
+				var $card = $(this).parent().prevAll(".card")
+				if (!$card.hasClass('card--disabled')) {
+					if ($card.hasClass('card--selected')) {
+						$card.removeClass('card--selected')
+					} else {
+						$card.addClass('card--selected')
+					}
+				}
+			});
+
+		});
+	</script>
+</body>
+
+</html>
